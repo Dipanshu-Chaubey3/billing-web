@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Billing Management Web App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #6b48ff, #00d2ff);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+            opacity: 0.95;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+            opacity: 1;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+    </style>
+</head>
+<body class="text-gray-800">
+    <div class="container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center text-white mb-8 drop-shadow-md fade-in">Billing Management Web App</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <a href="/add_product" class="card p-6 text-center rounded-lg bg-blue-500 text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-400 fade-in" style="animation-delay: 0.1s">
+                <i class="fas fa-box-open text-3xl mb-2"></i>
+                <h2 class="text-2xl font-semibold mb-2">Add Product</h2>
+                <p class="text-gray-200">Manage your product inventory effortlessly.</p>
+            </a>
+            <a href="/add_customer" class="card p-6 text-center rounded-lg bg-green-500 text-white hover:bg-green-600 focus:outline-none focus:ring-2 focus:ring-green-400 fade-in" style="animation-delay: 0.2s">
+                <i class="fas fa-users text-3xl mb-2"></i>
+                <h2 class="text-2xl font-semibold mb-2">Add Customer</h2>
+                <p class="text-gray-200">Keep track of your customers with ease.</p>
+            </a>
+            <a href="/billing" class="card p-6 text-center rounded-lg bg-purple-500 text-white hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-400 fade-in" style="animation-delay: 0.3s">
+                <i class="fas fa-file-invoice text-3xl mb-2"></i>
+                <h2 class="text-2xl font-semibold mb-2">Create Bill</h2>
+                <p class="text-gray-200">Generate invoices quickly and efficiently.</p>
+            </a>
+        </div>
+        <!-- Live Clock -->
+        <div class="text-center mt-6 text-white text-lg fade-in" id="clock" style="animation-delay: 0.4s">
+            Date: <span id="date"></span> | Time: <span id="time"></span>
+        </div>
+    </div>
+
+    <script>
+        // Live Clock Update
+        function updateClock() {
+            const now = new Date();
+            const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+            document.getElementById('date').textContent = now.toLocaleDateString('en-IN', options);
+            document.getElementById('time').textContent = now.toLocaleTimeString('en-IN', { hour12: true });
+        }
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call
+    </script>
+</body>
+</html>
